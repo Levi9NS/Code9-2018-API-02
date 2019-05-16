@@ -25,7 +25,7 @@ namespace Code9Insta.API.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost]
+        [HttpPost("Create")]
         public IActionResult CreateProfile([FromBody]CreateProfileDto profile)
         {
             if(!_validateRepository.IsUserNameHandleUnique(profile.User.UserName, profile.Handle))
@@ -52,7 +52,7 @@ namespace Code9Insta.API.Controllers
             return StatusCode(200, "Profile created");
         }
        
-        [HttpGet]
+        [HttpGet("Get")]
         public IActionResult GetProfile()
         {
             var userId = Guid.Parse(HttpContext.User.GetUserId());
